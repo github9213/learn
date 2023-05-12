@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chatting Page</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+.post {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  color: black; 
+}
+
+    </style>
+    <script>
+function postMessage() {
+  // Get the message input element
+  var messageInput = document.getElementById("messageInput");
+
+  // Get the post list element
+  var postList = document.getElementById("postList");
+
+  // Create a new post element
+  var post = document.createElement("div");
+  post.classList.add("post");
+
+  // Set the text content of the post element
+  post.textContent = messageInput.value;
+
+  // Append the post element to the post list element
+  postList.appendChild(post);
+
+  // Clear the message input
+  messageInput.value = "";
+}
+
+
+
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Chatting Page</h1>
+      <div class="entry">
+        <textarea id="messageInput" placeholder="Write your post..."></textarea>
+        <button onclick="postMessage()">Post</button>
+      </div>
+      <div id="postList"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

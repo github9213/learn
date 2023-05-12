@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Python to C++ Converter</title>
+</head>
+<body>
+	<h1>Python to C++ Converter</h1>
+
+	<form method="POST">
+		<label for="python_code">Enter Python code:</label><br>
+		<textarea id="python_code" name="python_code" rows="10" cols="50"></textarea><br>
+		<input type="submit" value="Convert">
+	</form>
+
+	{% if cpp_code %}
+	<hr>
+	<h2>C++ code:</h2>
+	<pre>{{ cpp_code }}</pre>
+	{% endif %}
+
+</body>
+</html>

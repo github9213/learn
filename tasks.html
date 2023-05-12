@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="tasks.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>Tasks</title>
+    <script>
+window.onload = function() {
+  // JavaScript code for the back-to-top button
+  // Get the button
+  var backToTopButton = document.getElementById("back-to-top");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+      backToTopButton.style.display = "block";
+    } else {
+      backToTopButton.style.display = "none";
+    }
+  };
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+  // Add an event listener to the button element
+  backToTopButton.addEventListener("click", topFunction);
+}
+function showSection(section) {
+    // hide all sections
+    var sections = document.querySelectorAll('section');
+    for (var i = 0; i < sections.length; i++) {
+      sections[i].style.display = 'none';
+    }
+  
+    // show selected section
+    document.getElementById(section + '-section').style.display = 'block';
+  
+    // update active class on navbar links
+    var navLinks = document.querySelectorAll('nav a');
+    for (var i = 0; i < navLinks.length; i++) {
+      if (navLinks[i].getAttribute('onclick') == 'showSection("' + section + '")') {
+        navLinks[i].classList.add('active');
+      } else {
+        navLinks[i].classList.remove('active');
+      }
+    }
+}
+    </script>
+</head>
+<body>
+    <div class="sidenav">
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('c++')">C++</a>
+        <a href="#" onclick="showSection('python')">Python</a>
+    </div>  
+    <section id="home-section" style="display:none;">
+        <h1>This is the tasks place</h1>
+    </section>
+    <section id="c++-section" style="display:none;">
+        <div class="content">
+            <div class="center">
+                <h1>C++ Tasks</h1>
+            </div>
+            <div class="center">
+                <p>1. Olvassunk be két egész számot, a program írja ki az összegüket, különbségüket, szorzatukat,
+                hányadosukat.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include iostream
+        using namespace std;
+                            
+        int main() {
+            int num1, num2;
+            cout << "Kerem adja meg az elso szamot: ";
+            cin >> num1;
+            cout << "Kerem adja meg a masodik szamot: ";
+            cin >> num2;
+                            
+            cout << "A szamok osszege: " << num1 + num2 << endl;
+            cout << "A szamok kulonbsege: " << num1 - num2 << endl;
+            cout << "A szamok szorzata: " << num1 * num2 << endl;
+            cout << "A szamok hanyadosa: " << num1 / num2 << endl;
+            return 0;
+        }   
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>2. A program olvassa be a háromszög két befogóját, majd írja ki az átfogót, területet, kerületet.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        #include <cmath>
+        using namespace std;
+                            
+        int main() {
+            float befogo1, befogo2;
+            cout << "Kerem adja meg a haromszog elso befogojet: ";
+            cin >> befogo1;
+            cout << "Kerem adja meg a haromszog masodik befogojet: ";
+            cin >> befogo2;
+                            
+            float atfogo = sqrt(pow(befogo1, 2) + pow(befogo2, 2));
+            float terulet = (befogo1 * befogo2) / 2;
+            float kerulet = befogo1 + befogo2 + atfogo;
+                            
+            cout << "Az atfogo hossza: " << atfogo << endl;
+            cout << "A haromszog terulete: " << terulet << endl;
+            cout << "A haromszog kerulete: " << kerulet << endl;
+            return 0;
+        }
+                            
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>3. A program olvassa be a téglatest éleit, majd íjra ki a téglatest felszínét és térfogatát.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            float a, b, c;
+            cout << "Kerem adja meg a teglatest egyik oldalat: ";
+            cin >> a;
+            cout << "Kerem adja meg a teglatest masik oldalat: ";
+            cin >> b;
+            cout << "Kerem adja meg a teglatest harmadik oldalat: ";
+            cin >> c;
+                            
+            float felszin = 2 * (a * b + b * c + c * a);
+            float terfogat = a * b * c;
+                            
+            cout << "A teglatest felszine: " << felszin << endl;
+            cout << "A teglatest terfogata: " << terfogat << endl;
+            return 0;
+        }
+                            
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>4. Egy beolvasott számról döntse el a program, hogy páros, vagy páratlan!</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int num;
+            cout << "Kerem adja meg a szamot: ";
+            cin >> num;
+                            
+            if (num % 2 == 0) {
+                cout << num << " paros szam." << endl;
+            } else {
+                cout << num << " paratlan szam." << endl;
+            }
+            return 0;
+        }    
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>5. Olvasson be két számot, a program írja ki, hogy melyik a nagyobb! (Az első szám, a második szám, egyenlőek)</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int num1, num2;
+            cout << "Kerem adja meg az elso szamot: ";
+            cin >> num1;
+            cout << "Kerem adja meg a masodik szamot: ";
+            cin >> num2;
+                            
+            if (num1 > num2) {
+                cout << num1 << " nagyobb, mint " << num2 << endl;
+            } else if (num2 > num1) {
+                cout << num2 << " nagyobb, mint " << num1 << endl;
+            } else {
+                cout << "A ket szam egyenlo." << endl;
+            }
+            return 0;
+        }
+                            
+                            
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>6. Olvasson be egy egész számot, majd írassa ki, hogy a szám osztható-e 5-tel?</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int num;
+            cout << "Kerem adja meg a szamot: ";
+            cin >> num;
+                            
+            if (num % 5 == 0) { 
+                cout << num << " oszthato 5-tel." << endl;
+            } else {
+                cout << num << " nem oszthato 5-tel." << endl;
+            }
+            return 0;
+        } 
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>7. A program olvassa be egy háromszög oldalait, majd a program adja meg, hogy a háromszög szerkeszthető-e?</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int a, b, c;
+            cout << "Kerem adja meg a haromszog oldalait: " << endl;
+            cout << "a = ";
+            cin >> a;
+            cout << "b = ";
+            cin >> b;
+            cout << "c = ";
+            cin >> c;
+                            
+            if (a + b > c && a + c > b && b + c > a) {
+                cout << "A haromszog szerkeztheto." << endl;
+            } else {
+                cout << "A haromszog nem szerkeztheto." << endl;
+            }
+            return 0;
+        }       
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>8. Olvassunk be egy számot, majd a program mondja meg, hogy lehet-e érdemjegy?</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int num;
+            cout << "Kerem adja meg a szamot: ";
+            cin >> num;
+                            
+            if (num >= 0 && num <= 100) {
+                cout << "A szam erdemjegynek megfelelo." << endl;
+            } else {
+                cout << "A szam nem felel meg erdemjegynek." << endl;
+            }
+            return 0;
+        }      
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>9. Olvasson be egy számot, majd a program írja ki, hogy pozitív, negatív, vagy nulla.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int num;
+            cout << "Kerem adja meg a szamot: ";
+            cin >> num;
+                            
+            if (num > 0) {
+                cout << "A szam pozitiv." << endl;
+            } else if (num < 0) {
+                cout << "A szam negativ." << endl;
+            } else {
+                cout << "A szam nulla." << endl;
+            }
+            return 0;
+        }        
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>10. Olvasson be egy számot (életkor), majd az értékétől függően írja ki, hogy az illető milyen pozícióban 
+                    van! (0-6: nem iskolás, 6-14: általános iskolás, 14-18: gimnazista, 18-24: egyetemista, 24-62: dolgozó, 
+                    egyéb esetben nyugdíjas)</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        using namespace std;
+                            
+        int main() {
+            int age;
+            cout << "Kerem adja meg az eletkorat: ";
+            cin >> age;
+                            
+            if (age >= 0 && age <= 6) {
+                cout << "Nem iskolas." << endl;
+            } else if (age >= 6 && age <= 14) {
+                cout << "Altalanos iskolas." << endl;
+            } else if (age >= 14 && age <= 18) {
+                cout << "Gimnazista." << endl;
+            } else if (age >= 18 && age <= 24) {
+                cout << "Egyetemista." << endl;
+            } else if (age >= 24 && age <= 62) {
+                cout << "Dolgozo." << endl;
+            } else {
+                cout << "Nyugdijas." << endl;
+            }
+                            
+            return 0;
+        } 
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+        <section id="python-section" style="display:none;">
+            <div class="center">
+                <h1>Python</h1>
+                <p>2. A program olvassa be a háromszög két befogóját, majd írja ki az átfogót, területet, kerületet.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        #include <cmath>
+        using namespace std;
+                            
+        int main() {
+            float befogo1, befogo2;
+            cout << "Kerem adja meg a haromszog elso befogojet: ";
+            cin >> befogo1;
+            cout << "Kerem adja meg a haromszog masodik befogojet: ";
+            cin >> befogo2;
+                            
+            float atfogo = sqrt(pow(befogo1, 2) + pow(befogo2, 2));
+            float terulet = (befogo1 * befogo2) / 2;
+            float kerulet = befogo1 + befogo2 + atfogo;
+                            
+            cout << "Az atfogo hossza: " << atfogo << endl;
+            cout << "A haromszog terulete: " << terulet << endl;
+            cout << "A haromszog kerulete: " << kerulet << endl;
+            return 0;
+        }
+                            
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>2. A program olvassa be a háromszög két befogóját, majd írja ki az átfogót, területet, kerületet.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        #include <cmath>
+        using namespace std;
+                            
+        int main() {
+            float befogo1, befogo2;
+            cout << "Kerem adja meg a haromszog elso befogojet: ";
+            cin >> befogo1;
+            cout << "Kerem adja meg a haromszog masodik befogojet: ";
+            cin >> befogo2;
+                            
+            float atfogo = sqrt(pow(befogo1, 2) + pow(befogo2, 2));
+            float terulet = (befogo1 * befogo2) / 2;
+            float kerulet = befogo1 + befogo2 + atfogo;
+                            
+            cout << "Az atfogo hossza: " << atfogo << endl;
+            cout << "A haromszog terulete: " << terulet << endl;
+            cout << "A haromszog kerulete: " << kerulet << endl;
+            return 0;
+        }
+                            
+
+                    </code></pre>
+                </div>
+            </div>
+            <div class="center">
+                <p>2. A program olvassa be a háromszög két befogóját, majd írja ki az átfogót, területet, kerületet.</p>
+                <div class="codebox">
+                    <pre><code>
+        #include <iostream>
+        #include <cmath>
+        using namespace std;
+                            
+        int main() {
+            float befogo1, befogo2;
+            cout << "Kerem adja meg a haromszog elso befogojet: ";
+            cin >> befogo1;
+            cout << "Kerem adja meg a haromszog masodik befogojet: ";
+            cin >> befogo2;
+                            
+            float atfogo = sqrt(pow(befogo1, 2) + pow(befogo2, 2));
+            float terulet = (befogo1 * befogo2) / 2;
+            float kerulet = befogo1 + befogo2 + atfogo;
+                            
+            cout << "Az atfogo hossza: " << atfogo << endl;
+            cout << "A haromszog terulete: " << terulet << endl;
+            cout << "A haromszog kerulete: " << kerulet << endl;
+            return 0;
+        }
+                            
+
+                    </code></pre>
+                </div>
+            </div>  
+        </section>    
+        <div class="footer1">
+            <div class="center">
+                <p>Minden jog fenntartva@</p>
+            </div>
+        </div>
+<!-- Footer -->
+<footer class="bg-dark text-center text-white">
+    <!-- Grid container -->
+    <div class="container p-4">
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+  
+        <!-- Twitter -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-twitter"></i
+        ></a>
+  
+        <!-- Google -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-google"></i
+        ></a>
+  
+        <!-- Instagram -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-instagram"></i
+        ></a>
+  
+        <!-- Linkedin -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+  
+        <!-- Github -->
+        <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
+          ><i class="fab fa-github"></i
+        ></a>
+      </section>
+      <!-- Section: Social media -->
+  
+      <!-- Section: Form -->
+      <section class="">
+        <form action="">
+          <!--Grid row-->
+          <div class="row d-flex justify-content-center">
+            <!--Grid column-->
+            <div class="col-auto">
+              <p class="pt-2">
+                <strong>Sign up for our newsletter</strong>
+              </p>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-md-5 col-12">
+              <!-- Email input -->
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example21" class="form-control" />
+                <label class="form-label" for="form5Example21">Email address</label>
+              </div>
+            </div>
+            <!--Grid column-->
+  
+            <!--Grid column-->
+            <div class="col-auto">
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-outline-light mb-4">
+                Subscribe
+              </button>
+            </div>
+            <!--Grid column-->
+          </div>
+          <!--Grid row-->
+        </form>
+      </section>
+      <!-- Section: Form -->
+  
+      <!-- Section: Text -->
+      <section class="mb-4">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+          repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+          eum harum corrupti dicta, aliquam sequi voluptate quas.
+        </p>
+      </section>
+      <!-- Section: Text -->
+  
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+            <h5 class="text-uppercase">Links</h5>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Link 1</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 2</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 3</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Link 4</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </section>
+      <!-- Section: Links -->
+    </div>
+    <!-- Grid container -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+    </div>
+    <button onclick="topFunction()" id="back-to-top" title="Go to top">&#9650;</button>
+</body>
+</html>
